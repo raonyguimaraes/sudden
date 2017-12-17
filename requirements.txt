@@ -1,0 +1,1 @@
+sudden.git@0933e21e26f0c0044605d374407b6b71114910b7#egg=sudden-master

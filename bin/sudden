@@ -5,28 +5,16 @@ import argparse
 from sudden.main import Sudden
 
 parser = argparse.ArgumentParser()
-parser.add_argument('options', help='install package', nargs='?')
-parser.add_argument('-i', dest='softwarename', required=False, metavar='conda', help='any tool to be installed')
+parser.add_argument('-u', '--update', dest='update', action='store_true')
+
+parser.add_argument('-i', dest='tool', required=False, nargs='+', metavar='conda', help='any tool to be installed')
 
 args = parser.parse_args()
 print(args)
 
-if args.options == 'update':
-    s = Sudden()
-    s.update()
+s = Sudden()
 
-# elif args.options == 'install_libs':
-#     pynnotator = pynnotator.Pynnotator()
-#     pynnotator.install_libs()
-# elif args.options == 'install_requirements':
-#     pynnotator = pynnotator.Pynnotator()
-#     pynnotator.install_requirements()
-# elif args.options == 'build':
-#     pynnotator = pynnotator.Pynnotator()
-#     pynnotator.build()
-# elif args.vcf_file:
-#     pynnotator = pynnotator.Pynnotator()
-#     pynnotator.annotate(args.vcf_file)
-# elif args.options == 'test':
-#     pynnotator = pynnotator.Pynnotator()
-#     pynnotator.test()
+if args.update:
+    s.update()
+if len(args.tool) > 0:
+	s.install(args.tool)

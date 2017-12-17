@@ -10,6 +10,10 @@ class Sudden:
 	def update(self):
 		call('sudo apt update', shell=True)
 		call('sudo apt upgrade', shell=True)
+	def install(self, tools):
+		print('install {}'.format(tools))
+		for tool in tools:
+			print(tool)
 
 if __name__ == '__main__':
     sudden = Sudden()
